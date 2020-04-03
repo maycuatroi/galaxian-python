@@ -10,7 +10,7 @@ class PlayerBasic(object):
         self.__layout = layout
         self.position = position
 
-        self.__images = ImageRegistry().get_images('data/shoot_')
+        self.__images = ImageRegistry().load_images('data/shoot_')
 
 
         self.__sw = self.__images[0].get_rect().width

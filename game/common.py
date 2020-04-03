@@ -46,8 +46,11 @@ class ImageRegistry(object):
 
         def load_image(self, filename):
             self.__registry[filename] = load_image(filename)
+            return self.__registry[filename]
 
         def load_images(self, filename_base):
+
+
             frameno = 0
             while True:
                 filename = '%s%02d.png' % (filename_base, frameno)
@@ -56,6 +59,8 @@ class ImageRegistry(object):
                 else:
                     break
                 frameno += 1
+
+            return list(self.__registry.values())
 
         def flush_all(self):
             self.__registry = {}

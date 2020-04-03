@@ -12,12 +12,12 @@ class Ship(object):
         self.__layout = destination
         self.__action = action_cb
 
-        self.static_ship = [ImageRegistry().get_image('data/ship.png')]
-        self.left_ship = ImageRegistry().get_images('data/ship_left_')
-        self.right_ship = ImageRegistry().get_images('data/ship_right_')
-        self.cshot_ship = ImageRegistry().get_images('data/ship_shoot_')
-        self.lshot_ship = ImageRegistry().get_images('data/ship_shoot_left_')
-        self.rshot_ship = ImageRegistry().get_images('data/ship_shoot_right_')
+        self.static_ship = [ImageRegistry().load_image('data/ship.png')]
+        self.left_ship = ImageRegistry().load_images('data/ship_left_')
+        self.right_ship = ImageRegistry().load_images('data/ship_right_')
+        self.cshot_ship = ImageRegistry().load_images('data/ship_shoot_')
+        self.lshot_ship = ImageRegistry().load_images('data/ship_shoot_left_')
+        self.rshot_ship = ImageRegistry().load_images('data/ship_shoot_right_')
 
         self.__current_frame = 0
 
