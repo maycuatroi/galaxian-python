@@ -1,15 +1,11 @@
- Mi propio juego de marcianitos
+Basic project of GaLAxian game on python
 --------------------------------
 
-Hola!
+# Installtation :
 
-Este juego es una tontuna (por poco tiempo), simplemente lo estoy escribiendo como
-ejercicio educativo.
+todo : requirements.txt
 
-Estoy intentado desarrollar el proyecto utilizando metodologias agiles:
-
-Para cada "feature" escribo el minimo codigo posible, nisiquiera utilizando
-orientacion a objetos. Una vez que la "feature" se considera terminada se
-refina el codigo y esta vez empleando orientacion a objetos, refactorizacion,
-etc.
- 
+run command : 
+````
+python galaxian.py -win
+````

@@ -3,6 +3,7 @@
 import os
 import os.path
 import sys
+sys.path.append('game')
 sys.path.append(os.getcwd())
 import pygame
 import random
