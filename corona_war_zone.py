@@ -112,7 +112,7 @@ class WarZone:
                                  virus[ast[0]].get_rect().width,
                                  virus[ast[0]].get_rect().height)
                 collision = ar.collidelist(shots.areas())
-                if (collision != -1):
+                if collision != -1:
                     destroy.append(a)
                     shots.destroy_shot(collision)
 
@@ -121,6 +121,9 @@ class WarZone:
                                  virus[ast[0]].get_rect().width,
                                  virus[ast[0]].get_rect().height)
                 collision = ar.collidelist(player.areas())
+                if collision!= 1:
+                    destroy.append(a)
+                    player.destroy(collision)
 
 
         for a in destroy:
