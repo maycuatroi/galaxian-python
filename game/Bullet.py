@@ -2,10 +2,9 @@
 
 
 import pygame
-import common
-from common import ImageRegistry
+from animation_utils import ImageRegistry
 
-class PlayerBasic(object):
+class Bullet(object):
     def __init__(self, layout, position):
         self.__layout = layout
         self.position = position

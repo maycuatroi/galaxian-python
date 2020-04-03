@@ -1,12 +1,11 @@
 #!/usr/bin/env python
 
-import common
-from common import ImageRegistry
+from animation_utils import ImageRegistry
 
 _MAX_SPEED = 6
 
 
-class Ship(object):
+class Doctor(object):
     def __init__(self, destination, action_cb = None):
 
         self.__layout = destination
@@ -18,22 +17,16 @@ class Ship(object):
         self.cshot_ship = ImageRegistry().load_images('data/ship_shoot_')
         self.lshot_ship = ImageRegistry().load_images('data/ship_shoot_left_')
         self.rshot_ship = ImageRegistry().load_images('data/ship_shoot_right_')
-
         self.__current_frame = 0
-
         self.__maxx = self.__layout.get_rect().width
         self.__maxy = self.__layout.get_rect().height
-
         self.x = self.__maxx - (self.static_ship[0].get_rect().width / 2) / 2
         self.y = self.__maxy - self.static_ship[0].get_rect().height - 5
-
         self.__minpx = 0
         self.__maxpx = (self.__maxx - self.static_ship[0].get_rect().width)
-
         self.__req_spd = 0
         self.vx = 0
         self.max_v = 0
-
         self.__fr = 0
         self.__fl = 0
         self.__sf = -1
@@ -43,6 +36,9 @@ class Ship(object):
 
     def go_right(self):
         self.__req_spd = _MAX_SPEED
+
+    def areas(self):
+        return  self.static_ship[0].get_rect().width * self.static_ship[0].get_rect().height
 
     def no_left(self):
         if self.__req_spd < 0:

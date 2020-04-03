@@ -49,18 +49,17 @@ class ImageRegistry(object):
             return self.__registry[filename]
 
         def load_images(self, filename_base):
-
-
             frameno = 0
+            images = []
             while True:
                 filename = '%s%02d.png' % (filename_base, frameno)
                 if os.path.exists(filename):
-                    self.load_image(filename)
+                    images.append(self.load_image(filename))
                 else:
                     break
                 frameno += 1
 
-            return list(self.__registry.values())
+            return images
 
         def flush_all(self):
             self.__registry = {}

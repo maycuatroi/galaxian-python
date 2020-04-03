@@ -1,0 +1,3 @@
+GAME_FPS = 30
+
+MAX_STARS = 50
