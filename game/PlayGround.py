@@ -3,14 +3,14 @@ import random
 from animation_utils import ImageRegistry
 
 
-class Space:
+class PlayGround:
     def __init__(self, destination):
         self.__layout = destination
 
         self.__maxx = self.__layout.get_rect().width
         self.__maxy = self.__layout.get_rect().height
 
-        self.bg = ImageRegistry().get_image('data/playground.png')
+        self.pg = ImageRegistry().get_image('data/playground.png')
 
         self.stars_spr = []
         self.stars_spr.append((ImageRegistry().load_image('data/star1.png'),
@@ -29,7 +29,7 @@ class Space:
                                star[0]))
 
     def update(self):
-        self.__layout.blit(self.bg, (0, 0))
+        self.__layout.blit(self.pg, (0, 0))
 
         for i in range(MAX_STARS):
             if random.randint(0, 50) != 5 or self.stars[i][2] > 4:

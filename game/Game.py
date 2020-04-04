@@ -4,9 +4,9 @@ import random
 import Player
 from Config import GAME_FPS
 from ShootBehavior import ShootBehavior
-from Space import Space
+from PlayGround import PlayGround
 from animation_utils import ImageRegistry
-from game.Enviroment import Enviroment
+from game.EnemyController import EnemyController
 
 
 
@@ -21,11 +21,11 @@ class Game:
         self.__scr.blit(ImageRegistry().load_image('data/background.png'),
                         (0, 0))
 
-        self.space = Space(self.__playground)
+        self.playground = PlayGround(self.__playground)
         self.pshots = ShootBehavior(self.__playground, 10)
         self.player = Player.Doctor(self.__playground,
                                     self.pshots.create)
-        self.viruses = Enviroment(self.__playground)
+        self.enemycontroller = EnemyController(self.__playground)
 
     def run(self):
 
@@ -34,7 +34,7 @@ class Game:
             self.__clock.tick(GAME_FPS)
 
             if random.randint(1, 20) == 3:
-                self.viruses.create_corona()
+                self.enemycontroller.spaw()
 
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
@@ -59,9 +59,9 @@ class Game:
                     self.player.shoot()
 
             # Draw everything
-            self.space.update()
+            self.playground.update()
             self.pshots.update()
-            self.viruses.update(self.pshots,self.player)
+            self.enemycontroller.update(self.pshots,self.player)
             self.player.update()
 
             self.__scr.blit(self.__playground, (150, 0))

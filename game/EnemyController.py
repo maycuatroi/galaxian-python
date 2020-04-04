@@ -3,16 +3,16 @@ import random
 from animation_utils import ImageRegistry
 
 
-class Enviroment:
+class EnemyController:
     def __init__(self, destination, max_viruses=10):
         self.__layout = destination
         self.__max_viruses = max_viruses
 
-        self.virus = ImageRegistry().load_images('data/asteroid_1_')
+        self.viruses = ImageRegistry().load_images('data/asteroid_1_')
         self.bacterias = ImageRegistry().load_images('data/bacterias_1_')
-        self.__nvirus = len(self.virus)
+        self.__nvirus = len(self.viruses)
         self.__maxx = (self.__layout.get_rect().width -
-                       self.virus[0].get_rect().width)
+                       self.viruses[0].get_rect().width)
         self.__maxy = self.__layout.get_rect().height
 
         self.__viruses = []
@@ -27,7 +27,7 @@ class Enviroment:
             original_rect.width, original_rect.height)
         return rotated_image.subsurface(clipped_rect)
 
-    def create_corona(self, x=None, vy=None):
+    def spaw(self, x=None, vy=None):
         if len(self.__viruses) >= self.__max_viruses:
             return
         if x is None:
@@ -42,7 +42,7 @@ class Enviroment:
         for a in range(len(self.__viruses)):
             ast = self.__viruses[a]
             if ast[-1] == 1:
-                virus = self.virus
+                virus = self.viruses
             else:
                 virus = self.bacterias
             self.__layout.blit(virus[ast[0]], (ast[1], ast[2]))
@@ -55,7 +55,7 @@ class Enviroment:
                 ar = pygame.Rect(ast[1], ast[2],
                                  virus[ast[0]].get_rect().width,
                                  virus[ast[0]].get_rect().height)
-                collision = ar.collidelist(shots.areas())
+                collision = ar.collidelist(shots.get_bullet_areas())
                 if collision != -1:
                     destroy.append(a)
                     shots.destroy_shot(collision)

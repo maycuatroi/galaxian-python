@@ -30,6 +30,10 @@ class Doctor(object):
         self.__fr = 0
         self.__fl = 0
         self.__sf = -1
+        self.is_alive = True
+
+    def move(self):
+        pass
 
     def go_left(self):
         self.__req_spd = -_MAX_SPEED

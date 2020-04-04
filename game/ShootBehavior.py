@@ -25,7 +25,7 @@ class ShootBehavior:
         if sid < len(self.__shots):
             del (self.__shots[sid])
 
-    def areas(self):
+    def get_bullet_areas(self):
         areas = []
         for bullet in self.__shots:
             areas.append(bullet.area)
